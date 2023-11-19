@@ -1,4 +1,6 @@
 export interface Antibody {
+    /**Unique id of the antibody */
+    id: string;
     /**Marker */
     marker: string;
     /**Alternate Name */
@@ -118,10 +120,6 @@ export function verifyAntibody(antibody: any): {
     verify('comments', antibody.comments, 'string', false);
     output.check = conditions.every((condition) => condition);
     return output;
-}
-
-export function test(): false {
-    return false;
 }
 
 function isType(value: any, type: 'string' | 'number') {
