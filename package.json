@@ -1,6 +1,6 @@
 {
     "name": "@rigatonirex/antibody-library",
-    "version": "1.1.1",
+    "version": "1.1.4",
     "description": "Shared library which provides antibody functionality",
     "author": "Keaton Foster",
     "license": "ISC",
@@ -10,6 +10,7 @@
         "./*.js"
     ],
     "scripts": {
-        "build": "tsc"
+        "build": "tsc",
+        "pub": "tsc && npm publish"
     }
 }

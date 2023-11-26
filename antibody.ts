@@ -32,8 +32,8 @@ export type AntibodyRecord = Antibody & {
     id: string;
 };
 
-export class AntibodyCollection extends Array<Antibody> {
-    constructor(antibodyArray: Antibody[]) {
+class BaseAntibodyCollection<T extends Antibody> extends Array<T> {
+    constructor(antibodyArray: T[]) {
         super();
         if (Array.isArray(antibodyArray)) {
             antibodyArray.forEach((antibody) => this.push(antibody));
@@ -55,20 +55,20 @@ export class AntibodyCollection extends Array<Antibody> {
         marker?: string;
         color?: string;
         clone?: string;
-    }): AntibodyCollection {
+    }): BaseAntibodyCollection<T> {
         return this.filter(
             (antibody) =>
                 (filters.marker ? antibody.marker === filters.marker : true) &&
                 (filters.color ? antibody.color === filters.color : true) &&
                 (filters.clone ? antibody.clone === filters.clone : true)
-        ) as AntibodyCollection;
+        ) as BaseAntibodyCollection<T>;
     }
     findSelection(
         marker: string,
         color: string,
         clone: string,
         company: string
-    ): Antibody | undefined {
+    ): T | undefined {
         return this.find(
             (antibody) =>
                 antibody.marker === marker &&
@@ -78,6 +78,10 @@ export class AntibodyCollection extends Array<Antibody> {
         );
     }
 }
+
+export class AntibodyCollection extends BaseAntibodyCollection<Antibody> {}
+
+export class AntibodyRecordCollection extends BaseAntibodyCollection<AntibodyRecord> {}
 
 export function verifyAntibody(antibody: any): {
     check: boolean;
