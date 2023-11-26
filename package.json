@@ -1,6 +1,6 @@
 {
     "name": "@rigatonirex/antibody-library",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "description": "Shared library which provides antibody functionality",
     "author": "Keaton Foster",
     "license": "ISC",

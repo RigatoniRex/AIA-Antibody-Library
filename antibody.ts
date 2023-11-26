@@ -1,6 +1,4 @@
-export interface Antibody {
-    /**Unique id of the antibody */
-    id: string;
+export type Antibody = {
     /**Marker */
     marker: string;
     /**Alternate Name */
@@ -27,7 +25,12 @@ export interface Antibody {
     num_tubes_in_stock?: number;
     /**Comments */
     comments?: string;
-}
+};
+
+export type AntibodyRecord = Antibody & {
+    /**Unique id of the antibody */
+    id: string;
+};
 
 export class AntibodyCollection extends Array<Antibody> {
     constructor(antibodyArray: Antibody[]) {
